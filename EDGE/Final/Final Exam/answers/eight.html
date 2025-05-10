@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Search</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        #searchInput {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        #searchBtn {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        #searchBtn:hover {
+            background-color: #2980b9;
+        }
+
+        .book-list {
+            columns: 2;
+            column-gap: 40px;
+            margin-top: 20px;
+        }
+
+        .book-list li {
+            margin-bottom: 10px;
+            padding: 8px;
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            break-inside: avoid;
+        }
+
+        .book-list li:hover {
+            background-color: #f0f8ff;
+        }
+
+        @media (max-width: 768px) {
+            .book-list {
+                columns: 1;
+            }
+            
+            #searchInput {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="one.html">Problem 1</a> |
+        <a href="three.html">Problem 3</a> |
+        <a href="four.html">Problem 4</a> |
+        <a href="five.html">Problem 5</a> |
+        <a href="six.html">Problem 6</a> |
+        <a href="seven.html">Problem 7</a> |
+        <a href="eight.html">Problem 8</a> |
+        <a href="nine.html">Problem 9</a>
+    </nav>
+
+    <h1>Problem 8: Book Search</h1>
+    
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Enter book title or author...">
+        <button id="searchBtn">Search</button>
+    </div>
+    
+    <h2>List of Books</h2>
+    <ol id="bookList" class="book-list">
+        <li>To Kill a Mockingbird by Harper Lee</li>
+        <li>1984 by George Orwell</li>
+        <li>Pride and Prejudice by Jane Austen</li>
+        <li>The Great Gatsby by F. Scott Fitzgerald</li>
+        <li>Moby-Dick by Herman Melville</li>
+        <li>War and Peace by Leo Tolstoy</li>
+        <li>The Catcher in the Rye by J.D. Salinger</li>
+        <li>The Lord of the Rings by J.R.R. Tolkien</li>
+        <li>Ulysses by James Joyce</li>
+        <li>Jane Eyre by Charlotte Brontë</li>
+    </ol>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const bookItems = document.querySelectorAll('#bookList li');
+
+        searchBtn.addEventListener('click', function() {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            let found = false;
+            
+            bookItems.forEach(book => {
+                const bookText = book.textContent.toLowerCase();
+                if (bookText.includes(searchTerm)) {
+                    alert(`Book found: ${book.textContent}`);
+                    found = true;
+                    return;
+                }
+            });
+
+            if (!found) {
+                alert('Book not found in the list');
+            }
+        });
+
+        // Add keyboard support (search when Enter is pressed)
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>

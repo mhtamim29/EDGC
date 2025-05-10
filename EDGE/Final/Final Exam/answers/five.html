@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem 5 - Score Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+
+        h1 {
+            color: #333;
+        }
+
+        #scoreSpan {
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+
+        button#decreaseBtn {
+            background-color: #dc3545;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        div {
+            background-color: #fff;
+            display: inline-block;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="one.html">Problem 1</a> |
+        <a href="three.html">Problem 3</a> |
+        <a href="four.html">Problem 4</a> |
+        <a href="five.html">Problem 5</a> |
+        <a href="six.html">Problem 6</a> |
+        <a href="seven.html">Problem 7</a> |
+        <a href="eight.html">Problem 8</a> |
+        <a href="nine.html">Problem 9</a>
+    </nav>
+
+    <h1>Problem 5</h1>
+
+    <div>
+        <p>Your score is: <span id="scoreSpan">0</span></p>
+        <button id="increaseBtn">Increase</button>
+        <button id="decreaseBtn">Decrease</button>
+    </div>
+
+    <script>
+        const scoreSpan = document.getElementById('scoreSpan');
+        const increaseBtn = document.getElementById('increaseBtn');
+        const decreaseBtn = document.getElementById('decreaseBtn');
+        let score = 0;
+
+        increaseBtn.addEventListener('click', function () {
+            score += 5;
+            scoreSpan.textContent = score;
+        });
+
+        decreaseBtn.addEventListener('click', function () {
+            score -= 10;
+            scoreSpan.textContent = score;
+        });
+    </script>
+
+</body>
+</html>

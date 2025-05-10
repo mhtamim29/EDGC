@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Validation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #f5f7fa;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .input-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        #ageInput {
+            padding: 12px 15px;
+            width: 200px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        #ageInput:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        #ageInput.error {
+            border-color: #e74c3c;
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+        }
+
+        #submitBtn {
+            padding: 12px 25px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        #submitBtn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        #submitBtn:active {
+            transform: translateY(0);
+        }
+
+        .instructions {
+            text-align: center;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="one.html">Problem 1</a> |
+        <a href="three.html">Problem 3</a> |
+        <a href="four.html">Problem 4</a> |
+        <a href="five.html">Problem 5</a> |
+        <a href="six.html">Problem 6</a> |
+        <a href="seven.html">Problem 7</a> |
+        <a href="eight.html">Problem 8</a> |
+        <a href="nine.html">Problem 9</a>
+    </nav>
+
+    <h1>Age Validation</h1>
+    
+    <div class="input-container">
+        <input type="number" id="ageInput" placeholder="Enter your age">
+        <button id="submitBtn">Submit</button>
+    </div>
+
+    <p class="instructions">Enter your age to validate. Ages over 100 will be considered invalid.</p>
+
+    <script>
+        const ageInput = document.getElementById('ageInput');
+        const submitBtn = document.getElementById('submitBtn');
+
+        function validateAge() {
+            const age = parseInt(ageInput.value);
+            
+            if (isNaN(age)) {
+                alert('Please enter a valid number');
+                ageInput.classList.add('error');
+            } else if (age > 100) {
+                alert('Invalid Input - Age cannot be more than 100');
+                ageInput.classList.add('error');
+            } else if (age < 0) {
+                alert('Invalid Input - Age cannot be negative');
+                ageInput.classList.add('error');
+            } else {
+                alert(`You are ${age} years old`);
+                ageInput.classList.remove('error');
+            }
+        }
+
+        submitBtn.addEventListener('click', validateAge);
+
+        // Also validate when pressing Enter key
+        ageInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                validateAge();
+            }
+        });
+
+        // Remove error class when user starts typing
+        ageInput.addEventListener('input', function() {
+            if (this.classList.contains('error')) {
+                this.classList.remove('error');
+            }
+        });
+    </script>
+</body>
+</html>
